@@ -1,0 +1,53 @@
+*,
+html,
+body,
+.content,
+#wrapper,
+#header,
+#main,
+#top-nav,
+#nav-container
+#footer,
+#header_link,
+#image_gallery,
+#header form ,
+#products-cont,
+#footer-wrapper,
+#slider-wrapper,
+#stone-image-wrapper,
+#stone-text-cont,
+#share-inquiry-cont,
+#home,
+#log-in,
+#search-btn,
+.category-cont,
+.category-img,
+.category-label,
+.category-label-text,
+.stone-solo-img,
+.liner,
+.social-ico,
+.stone-title,
+.t-nav,
+.products-individual,
+.products-img,
+.footer-cont,
+form,
+input,
+button,
+h1,
+h2,
+h3,
+img,
+p,
+ul,
+li,
+a
+{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	
+}	
