@@ -11,8 +11,11 @@ import Navbar from "./navbar.component"
 import Home from "./home.component"
 import LoginBot from "./loginBot.component"
 import StartApp from "./startApp.component"
+import SMSToUser from "./sms-user.component"
+import ResToM from "./respond-to-message.component"
 import SetBotStatus from "./set-bot-status.component"
 import Footer from "./footer.component"
+
 
 
 
@@ -20,38 +23,49 @@ const routes = [
   {
     path: "/home",
     exact: true,
-    sidebar: () => <div>home!</div>,
+    sidebar: () => <div></div>,
     main: () => <Home/>
   },
   {
     path: "/startApp",
-    sidebar: () => <div>start app</div>,
+    sidebar: () => <div></div>,
     main: () => <StartApp/>
   },
   {
     path: "/loginbot",
-    sidebar: () => <div>log in Bot</div>,
+    sidebar: () => <div></div>,
     main: () => <LoginBot/>
   },
   {
     path: "/setbotstatus",
     exact: true,
-    sidebar: () => <div>Set bot Status</div>,
+    sidebar: () => <div></div>,
     main: () => <SetBotStatus/>
   },
   {
+    path: "/sms-to-user",
+    sidebar: () => <div></div>,
+    main: () => <SMSToUser/>
+  },
+  {
+    path: "/respond-to-message",
+    exact: true,
+    sidebar: () => <div></div>,
+    main: () => <ResToM/>
+  },
+  {
     path: "/setup-command-listener",
-    sidebar: () => <div>Set Up Command Listener</div>,
+    sidebar: () => <div></div>,
     main: () => <h2>Set Up Command Listener</h2>
   },
   {
     path: "/send-messaage-to-all-channel",
-    sidebar: () => <div>Send Message to all Channel</div>,
+    sidebar: () => <div></div>,
     main: () => <h2>Send Message to all Channel</h2>
   },
   {
     path: "/send-message-channel",
-    sidebar: () => <div>Send Message Channel</div>,
+    sidebar: () => <div></div>,
     main: () => <h2>Send Message Channel</h2>
   }
   
@@ -75,7 +89,13 @@ export default function Main() {
                 <Link to="/loginbot" style={{ textDecoration: 'none', color: 'black'}}>Login Bot</Link>
               </li>
               <li className="trc-side-bar-nav">
+                <Link to="/sms-to-user" style={{ textDecoration: 'none', color: 'black'}}>Send Message to User</Link>
+              </li>
+              <li className="trc-side-bar-nav">
                 <Link to="/setbotstatus" style={{ textDecoration: 'none', color: 'black'}}>Set bot Status</Link>
+              </li>
+              <li className="trc-side-bar-nav">
+                <Link to="/respond-to-message" style={{ textDecoration: 'none', color: 'black'}}>Respond To Message</Link>
               </li>
               <li className="trc-side-bar-nav">
                 <Link to="/setup-command-listener" style={{ textDecoration: 'none', color: 'black' }}>Setup Command Listener</Link>
