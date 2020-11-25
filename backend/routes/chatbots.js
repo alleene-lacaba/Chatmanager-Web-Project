@@ -1,31 +1,50 @@
 const router = require('express').Router();
 const Discord = require('discord.js');
+//const chatBotManager = require('chat_manager_library');
 //const { prefix, token } = require('./config.json');
 const bot = new Discord.Client();
-const token =  "Nzc1NzUyODYyNzc2MTY0NDUz.X6q6Jw.j3XxrZ7cS0-kl0ETMR4q3XyatWk";
+const token =  "Nzc1NzUyODYyNzc2MTY0NDUz.X6q6Jw.HNsr3hX8RHDnp4ItzBNsAxhH2Qg";
 const prefix = "!";
-const chatbot ={
-  name: "alleene",
-  nickname: "bambi"
-}
-
-
+var text = "";
+var tempArr = [];
+var resToMessage = "";
 
 router.route('/loginbot').get((req, res) => {
-  res.send({client : chatbot});
+  res.send({client : bot});
 });
 
-router.route('/respond-to-message').get((req, res) => {
-  res.send({client : chatbot});
+
+
+router.route('/respond-to-message').post((req, res) => {
+  resToMessage = req.body.message;
+  bot.on('message', message => {
+    if (message.content.startsWith(`${prefix}help`)) {
+          message.channel.send(resToMessage);
+      } 
+  });
+  res.send({client : bot});
 });
+/*
+router.route('/update/:id').post((req, res) => {
+  Exercise.findById(req.params.id)
+    .then(exercise => {
+      exercise.username = req.body.username;
+      exercise.description = req.body.description;
+      exercise.duration = Number(req.body.duration);
+      exercise.date = Date.parse(req.body.date);
+
+      exercise.save()
+        .then(() => res.json('Exercise updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+}); */
 
 
 
 
 
 bot.on('ready', () => {
-  //var generalChannel = client.channel.fetch(); // Replace with known channel ID
-  //generalChannel.send("Hello, world! from my web app");
   //client.user.setStatus('idle');
   console.log("bot is ready");
   bot.channels.fetch('764039626368614420')
@@ -35,14 +54,21 @@ bot.on('ready', () => {
     user.send('heloo testing private message from web app');
    })
   .catch(message => console.log((message)));
+   
+  var channels = bot.channels.cache.forEach(logMapElements);
+  //console.log(channels);
+  parseChannels(tempArr);
+  //console.log(channels.type);
+  //parseChannels(arra);
+
 
 });
 
 bot.on('message', message => {
-	if (message.content.startsWith(`${prefix}ping`)) {
-        message.channel.send('Pong.');
-    } else if (message.content.startsWith(`${prefix}beep`)) {
-        message.channel.send(`Boop. and created at: ${message.createdAT}`);
+	if (message.content.startsWith(`${prefix}help`)) {
+        message.channel.send('Thank for visiting our website, please check documentation from our Github page for installation and usage of every functions at: https://github.com/CSCI-49900-Fall-2020/project-chatmanager');
+    } else if (message.content.startsWith(`${prefix}ListChannels`)) {
+        message.channel.send(`Channels are: ${text}`);
     }
     else if (message.content === `${prefix}server`) {
         message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
@@ -54,6 +80,18 @@ bot.on('message', message => {
 });
 
 bot.login(token);
+function logMapElements(value, key, map) {
+  tempArr.push(value.name);
+}
+
+function parseChannels(tempArr){
+  
+  var x;
+  for (x in tempArr) {
+    text += tempArr[x] + ", ";
+  }
+  console.log(text);
+}
 /*
 router.route('/add').post((req, res) => {
   const username = req.body.username;
